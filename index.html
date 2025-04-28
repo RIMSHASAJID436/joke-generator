@@ -1,38 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Joke Generator</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=sentiment_very_satisfied" />
+    <style>
+        body{
+            background-color: #fab22e;
+        }
+.wrapper{
+background-color: black;
+width: 80vmin;
+padding: 50px 40px;
+position: absolute;
+transform: translate(-50% , -50%);
+top: 50%;
+left: 50%;
+border-radius: 5pz;
+box-shadow: 20px 20px 40px rgba(97,63,0,0.4);
+}
+span{
+    display: block;
+text-align: center;
+font-size: 100px;
+}
+p{
+    font-size: 16px;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: 400;
+    word-wrap: break-word;
+    line-height: 35px;
+    margin: 30px 0;   
+}
+button{
+    display: block;
+    background-color: #fab22e;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+    padding: 12px 25px;
+    margin: 0 auto;
+    border-radius: 5px;
+    cursor: pointer;
+}
+    </style>
 </head>
-<body> 
 
+<body>
+<div class="wrapper">
     <h1>Joke Generator</h1>
+    <span>&#128514</span>
     <p class="para"></p>
-    <button class="btn">Generate Random Joke</button>
-
+    <button class="btn">Get Random Joke</button>
+</div>
 </body>
 
 <script>
     let para = document.querySelector(".para")
     let btn = document.querySelector(".btn")
-const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,political"
+    const url = "https://v2.jokeapi.dev/joke/Any?blacklistFlags=religious,political"
 
-let jokes = async()=>{
-    let response = await fetch(url);
-let data = await response.json();
+    let jokes = async () => {
+        let response = await fetch(url);
+        let data = await response.json();
 
 
-if(data.joke == undefined){
-    para.innerHTML = data.setup +"<br>"+ data.delivery;
-}
-else{
-    para.innerHTML = data.joke
-}
+        if (data.joke == undefined) {
+            para.innerHTML = data.setup + "<br>" + data.delivery;
+        }
+        else {
+            para.innerHTML = data.joke
+        }
 
-// console.log(data);
-}
-btn.addEventListener('click',jokes)
+        // console.log(data);
+    }
+    btn.addEventListener('click', jokes)
 
 
 
